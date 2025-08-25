@@ -1,0 +1,38 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: app-2048
+  name: deployment-2048
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: app-2048
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: app-2048
+    spec:
+      nodeSelector:
+        role: autoscaling
+      containers:
+        - image: public.ecr.aws/l6m2t8p7/docker-2048:latest
+          imagePullPolicy: Always
+          name: app-2048
+          ports:
+            - containerPort: 80
+          resources:
+            requests:
+              cpu: 800m
+              memory: 1800Mi
+            limits:
+              cpu: 1900m
+              memory: 3900Mi
+      #     volumeMounts:
+      #       - name: game-data
+      #         mountPath: /var/lib/2048
+      # volumes:
+      #   - name: game-data
+      #     persistentVolumeClaim:
+      #       claimName: game-data-pvc

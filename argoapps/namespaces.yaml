@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: namespaces
+  namespace: demo-tenant-apps
+spec:
+  destination:
+    namespace: demo-tenant-apps
+    server: https://kubernetes.default.svc
+  project: demo-tenant
+  source:
+    repoURL:
+    targetRevision: HEAD
+    path: namespaces
+  syncPolicy:
+    automated:
+      selfHeal: true
+      prune: true

@@ -1,0 +1,7 @@
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: app-2048
+  labels:
+    ithCode: "ith111"
