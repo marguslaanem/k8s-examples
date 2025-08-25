@@ -10,7 +10,7 @@ metadata:
     cert-manager.io/private-key-size: "384"
 spec:
   rules:
-    - host: app-2048.idp-poc.dev.enefit.com
+    - host: fqdn
       http:
         paths:
           - path: /
@@ -22,5 +22,5 @@ spec:
                   number: 80
   tls:
     - hosts:
-        - app-2048.idp-poc.dev.enefit.com
+        - fqdn
       secretName: app-2048-tls
